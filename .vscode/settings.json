@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "valarray": "cpp",
+        "iomanip": "cpp"
+    },
+    "editor.tabCompletion": "on",
+    "editor.suggest.localityBonus": true
+}
