@@ -141,14 +141,17 @@ result read_double(double &d)
         }
         reverseStr(num);
 
-        // remove trailing zeroes if multiple are encountered
-        while(N > 1 && num[N - 1] == '0') {
-            num[--N] = '\0';
+        // remove trailing zeroes if multiple are encountered and the number is real
+        if(num_dot == 1) {
+            while(N > 1 && num[N - 1] == '0') {
+                num[--N] = '\0';
+            }
+            if(num[N - 1] == '.') {
+                num[N++] = '0';
+                num[N] = '\0';
+            }
         }
-        if(num[N - 1] == '.') {
-            num[N++] = '0';
-            num[N] = '\0';
-        }
+        
         int num_decimal = 0;
         for(int i = N - 1; i > 0; --i) {
             if(num[i] == '.') {
