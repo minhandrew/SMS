@@ -142,7 +142,7 @@ void Shop::add_item()
     // read product's cost
     do {
         cout << "Item's cost: ";
-        res = read_double(cur.cost);
+        res = read_pos_double(cur.cost);
         if(res == EMPTY) {
             cout << "Nothing was inputted. Please try again.\n";
         }
@@ -151,14 +151,14 @@ void Shop::add_item()
         }
         else if(res == INVALID) {
             cout << "Errors. Make sure that the input contains valid characters, no more than " << MAX_DECIMAL << " digits"
-                    " after the decimap point, and no more than 15 significant digits.\n";
+                    " after the decimap point, no more than 15 significant digits, and the number is positive.\n";
         }
     } while(res != SUCCESSFUL);
     totalCost += cur.cost * cur.stock;
     // read item's price
     do {
         cout << "Item's price: ";
-        res = read_double(cur.price);
+        res = read_pos_double(cur.price);
         if(res == EMPTY) {
             cout << "Nothing was inputted. Please try again.\n";
         }
@@ -167,7 +167,7 @@ void Shop::add_item()
         }
         else if(res == INVALID) {
             cout << "Errors. Make sure that the input contains valid characters, no more than " << MAX_DECIMAL << " digits"
-                    " after the decimap point, and no more than 15 significant digits.\n";
+                    " after the decimap point, no more than 15 significant digits, and the number is positive.\n";
         }
     } while(res != SUCCESSFUL);
 
@@ -221,7 +221,7 @@ void Shop::edit_item()
     // read product's cost
     do {
         cout << "Item's new cost (hit Enter to keep the old cost): ";
-        res = read_double(cur.cost);
+        res = read_pos_double(cur.cost);
         if(res == EMPTY) {
             cur.cost = itemsList[pos].cost;
             res = SUCCESSFUL;
@@ -231,7 +231,7 @@ void Shop::edit_item()
         }
         else if(res == INVALID) {
             cout << "Errors. Make sure that the input contains valid characters, no more than " << MAX_DECIMAL << " digits"
-                    " after the decimap point, and no more than 15 significant digits.\n";
+                    " after the decimap point, no more than 15 significant digits, and the number is positive.\n";
         }
     } while(res != SUCCESSFUL);
     // update the totalCost based on the new cost of the product
@@ -241,7 +241,7 @@ void Shop::edit_item()
     // read item's price
     do {
         cout << "Item's new price (hit Enter to keep the old price): ";
-        res = read_double(cur.price);
+        res = read_pos_double(cur.price);
         if(res == EMPTY) {
             cur.price = itemsList[pos].price;
             res = SUCCESSFUL;
@@ -251,7 +251,7 @@ void Shop::edit_item()
         }
         else if(res == INVALID) {
             cout << "Errors. Make sure that the input contains valid characters, no more than " << MAX_DECIMAL << " digits"
-                    " after the decimap point, and no more than 15 significant digits.\n";
+                    " after the decimap point, no more than 15 significant digits, and the number is positive.\n";
         }
     } while(res != SUCCESSFUL);
     itemsList[pos].price = cur.price;

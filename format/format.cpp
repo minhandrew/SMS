@@ -92,7 +92,7 @@ result read_char(char &chr)
     }
 }
 
-result read_double(double &d)
+result read_pos_double(double &d)
 {
     d = -1.0;
     const int MAX = 50;
@@ -151,7 +151,13 @@ result read_double(double &d)
                 num[N] = '\0';
             }
         }
+
+        if(strcmp(num, "0") == 0 || strcmp(num, "0.0") == 0) {
+            // the number needs to be positive
+            return INVALID;
+        }
         
+        // the number of digits after the decimal point should be <= 2
         int num_decimal = 0;
         for(int i = N - 1; i > 0; --i) {
             if(num[i] == '.') {
@@ -227,6 +233,7 @@ result read_pos_int(int &X)
             char lim[] = "2147483647"; // MAX_INT
             if(strcmp(num, lim) == 1) return INVALID;
         }
+        else if(N == 1 && num[0] == '0') return INVALID;
 
         X = 0;
         for(int i = 0; i < N; ++i) {

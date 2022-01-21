@@ -43,17 +43,16 @@ INVALID: If the character inputted is invalid. A null character is returned.
 result read_char(char &);
 
 /*
-read_double(): Input a real number and return:
+read_pos_double(): Input a positive real number and return:
 SUCCESSFUL: If the number inputted is in valid format and contains <= 15 significant figures.
 EMPTY: If nothing was inputted. A value of -1.0 is returned.
 EXCESSIVE: If too many characters were inputted. A value of -1.0 is returned.
-INVALID: If the number inputted is in the wrong format or contains more than 15 significant figures or has more than MAX_DECIMAL
-    decimal places. A value of -1.0 is returned.
-In addition, the number of digits found after the decimal point would also be returned.
+INVALID: If the number inputted is not positive, in the wrong format or contains more than 15 significant figures or has more
+    than MAX_DECIMAL decimal places. A value of -1.0 is returned.
 
 Note that leading and trailing zeroes will be eliminated appropriately.
 */
-result read_double(double &);
+result read_pos_double(double &);
 
 /*
 read_pos_int(): Input an 32-bit positive integer and return:
